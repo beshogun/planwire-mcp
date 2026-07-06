@@ -1,6 +1,6 @@
 {
   "name": "planwire-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP server for PlanWire \u2014 UK planning application data for AI agents. Search, look up, and geo-query UK planning applications from Claude, Cursor, and any MCP client.",
   "type": "module",
   "bin": {
@@ -44,5 +44,6 @@
   },
   "bugs": {
     "url": "https://github.com/beshogun/planwire-mcp/issues"
-  }
+  },
+  "mcpName": "io.github.beshogun/planwire-mcp"
 }

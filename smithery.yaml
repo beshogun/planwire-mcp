@@ -1,0 +1,16 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - planwireApiKey
+    properties:
+      planwireApiKey:
+        type: string
+        description: Your PlanWire API key. Get a free sandbox key at https://planwire.io.
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', 'planwire-mcp'],
+      env: { PLANWIRE_API_KEY: config.planwireApiKey }
+    })

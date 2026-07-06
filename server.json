@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.beshogun/planwire-mcp",
+  "description": "UK planning application data for AI agents. Search, geo-query and look up UK planning applications via the PlanWire API.",
+  "repository": {
+    "url": "https://github.com/beshogun/planwire-mcp",
+    "source": "github"
+  },
+  "version": "0.1.2",
+  "websiteUrl": "https://planwire.io/mcp",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "planwire-mcp",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "description": "Your PlanWire API key (free sandbox at https://planwire.io)",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true,
+          "name": "PLANWIRE_API_KEY"
+        }
+      ]
+    }
+  ]
+}
