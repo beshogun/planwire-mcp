@@ -1,0 +1,45 @@
+{
+  "name": "planwire-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for PlanWire — UK planning application data for AI agents. Search, look up, and geo-query UK planning applications from Claude, Cursor, and any MCP client.",
+  "type": "module",
+  "bin": {
+    "planwire-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "planning",
+    "uk-planning",
+    "planning-applications",
+    "property",
+    "proptech",
+    "planwire",
+    "claude",
+    "ai-agents"
+  ],
+  "author": "PlanWire",
+  "license": "MIT",
+  "homepage": "https://planwire.io/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/planwire/planwire-mcp.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  }
+}
