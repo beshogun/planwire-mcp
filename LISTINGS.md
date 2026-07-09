@@ -33,12 +33,13 @@ already registry-ready (`server.json`, `smithery.yaml`, `mcpName`, publish workf
 ## Per-registry actions
 
 ### 1. Official MCP Registry (registry.modelcontextprotocol.io) — mostly automated
-Everything is in place (`server.json` + `mcpName`). Two ways to publish:
-- **Automated (recommended):** add an `NPM_TOKEN` secret to the GitHub repo (Settings →
-  Secrets → Actions), then `git tag v0.1.2 && git push origin v0.1.2`. The workflow
-  publishes npm 0.1.2 (with mcpName) and registers with the official registry via OIDC.
-- **Manual:** `npm publish` (0.1.2), then download `mcp-publisher`, run
-  `mcp-publisher login github` (OAuth as beshogun) and `mcp-publisher publish`.
+Everything is in place (`server.json` + `mcpName`) and the manifest points at the live
+npm version, `0.1.1`.
+- **Registry publish:** download `mcp-publisher`, run `mcp-publisher login github`
+  (OAuth as beshogun), then `mcp-publisher publish`.
+- **Future automated npm + registry publish:** for the next package change, bump to
+  `0.1.2`, add an `NPM_TOKEN` secret to the GitHub repo (Settings → Secrets → Actions),
+  then tag and push. Do not reuse `0.1.1`; it is already published.
 
 ### 2. Smithery (smithery.ai) — auto-detects, then claim
 `smithery.yaml` is in the repo, so Smithery's crawler can list it. Sign in at
