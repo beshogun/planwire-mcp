@@ -6,13 +6,13 @@
     "url": "https://github.com/beshogun/planwire-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://planwire.io/mcp",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "planwire-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },
