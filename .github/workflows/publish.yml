@@ -1,7 +1,8 @@
 name: Publish to npm + MCP Registry
 
-# Push a version tag (e.g. v0.1.2) to publish the npm package and register it
-# in the official MCP Registry. Requires an NPM_TOKEN repo secret.
+# Push a version tag (e.g. v0.1.4) to publish the npm package and register it
+# in the official MCP Registry. Requires an NPM_TOKEN repo secret only when the
+# npm version has not already been published manually.
 on:
   push:
     tags: ["v*"]
@@ -24,7 +25,14 @@ jobs:
       - run: npm run build --if-present
 
       - name: Publish to npm
-        run: npm publish
+        run: |
+          PKG="$(node -p "require('./package.json').name")"
+          VERSION="$(node -p "require('./package.json').version")"
+          if npm view "$PKG@$VERSION" version >/dev/null 2>&1; then
+            echo "$PKG@$VERSION is already published on npm; skipping npm publish."
+          else
+            npm publish
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
