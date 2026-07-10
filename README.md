@@ -1,29 +1,30 @@
 # PlanWire MCP Server
 
-UK planning application data for AI agents. Search, look up, and geo-query every UK
-planning application from Claude, Cursor, or any [MCP](https://modelcontextprotocol.io)
-client — conversationally.
+Use UK planning application data inside Claude, Cursor, and any MCP client.
 
-Powered by the [PlanWire](https://planwire.io) API: broader council coverage than the
-free government data, richer filtering, and real-time updates.
+PlanWire exposes fresh, normalised UK planning application data through a public API. This MCP server wraps that API as agent tools so an assistant can search applications, inspect a specific record, look near a location, and list supported councils without you writing API calls by hand.
 
-## Tools
+Get a free sandbox API key at https://planwire.io/?utm_source=npm&utm_medium=mcp_readme&utm_campaign=mcp.
 
-| Tool | What it does |
-|---|---|
-| `search_planning_applications` | Search by keyword, council, postcode, status, type, or date range |
-| `nearby_planning_applications` | Find applications within a radius of a lat/lng point |
-| `get_planning_application` | Fetch one application by id |
-| `list_councils` | List covered councils and their IDs |
+## What MCP Is
 
-## Setup
+Model Context Protocol (MCP) is a standard way for AI tools to call external services. You run this package locally through `npx`; it talks to PlanWire using your own API key and returns structured planning data to the MCP client.
 
-1. Get an API key (free sandbox, no card) at **https://planwire.io**.
-2. Add the server to your MCP client.
+This server uses stdio transport. It does not store credentials or run a hosted proxy.
 
-### Claude Desktop / Claude Code
+## Install
 
-Add to your MCP config (`claude_desktop_config.json`, or `.mcp.json` in a project):
+You need Node.js 18+ and a PlanWire API key.
+
+```bash
+npx -y planwire-mcp
+```
+
+The server expects `PLANWIRE_API_KEY` in the environment. Optional: set `PLANWIRE_API_BASE` to override the default `https://api.planwire.io`.
+
+## Claude Desktop
+
+Add this to `claude_desktop_config.json`:
 
 ```json
 {
@@ -31,34 +32,89 @@ Add to your MCP config (`claude_desktop_config.json`, or `.mcp.json` in a projec
     "planwire": {
       "command": "npx",
       "args": ["-y", "planwire-mcp"],
-      "env": { "PLANWIRE_API_KEY": "your_key_here" }
+      "env": {
+        "PLANWIRE_API_KEY": "your_planwire_key_here"
+      }
     }
   }
 }
 ```
 
-### Cursor / other MCP clients
+Restart Claude Desktop after saving the config.
 
-Same command (`npx -y planwire-mcp`), with `PLANWIRE_API_KEY` in the environment.
+## Claude Code
 
-## Example prompts
+Add this to your project `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "planwire": {
+      "command": "npx",
+      "args": ["-y", "planwire-mcp"],
+      "env": {
+        "PLANWIRE_API_KEY": "your_planwire_key_here"
+      }
+    }
+  }
+}
+```
+
+## Cursor
+
+Add the same server command in Cursor's MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "planwire": {
+      "command": "npx",
+      "args": ["-y", "planwire-mcp"],
+      "env": {
+        "PLANWIRE_API_KEY": "your_planwire_key_here"
+      }
+    }
+  }
+}
+```
+
+## Tools
+
+| Tool | What it does |
+| --- | --- |
+| `search_planning_applications` | Search by keyword, council, postcode, status, type, or date range. |
+| `nearby_planning_applications` | Find applications near a latitude/longitude point. |
+| `get_planning_application` | Fetch one application by PlanWire application id. |
+| `list_councils` | List covered councils and their IDs. |
+
+## Example Prompts
 
 - "Search PlanWire for recent planning applications in Camden."
-- "Any refused householder extensions in OX1 in the last year?"
+- "Find refused householder extensions in OX1 from the last year."
 - "What planning applications are within 1km of 51.5074, -0.1278?"
-- "Which councils does PlanWire cover?"
+- "List the councils PlanWire covers."
+- "Find planning applications mentioning HMOs in Manchester."
 
-## Notes
+## Limits And Pricing
 
-- Free keys are capped at 10 results per page and a daily request limit; paid plans lift
-  both. Upgrade at https://planwire.io/#pricing.
-- Rate-limit (429) and auth (401) errors come back as clear messages, not crashes.
+Free sandbox keys are suitable for testing and are capped on daily calls and result size. Paid plans increase limits for production use.
 
-## Environment
+Pricing: https://planwire.io/?utm_source=npm&utm_medium=mcp_readme&utm_campaign=mcp#pricing
 
-| Var | Required | Default |
-|---|---|---|
-| `PLANWIRE_API_KEY` | yes | — |
-| `PLANWIRE_API_BASE` | no | `https://api.planwire.io` |
+## Troubleshooting
 
-MIT licensed. Built by PlanWire · https://planwire.io
+If the tool says `PLANWIRE_API_KEY is not set`, add your key to the MCP client config and restart the client.
+
+If PlanWire returns `401`, check that the key is correct and active.
+
+If PlanWire returns `429`, the key has reached its rate limit. Use fewer calls or upgrade at https://planwire.io/?utm_source=npm&utm_medium=mcp_readme&utm_campaign=mcp#pricing.
+
+## Development
+
+```bash
+npm install
+npm run build
+npm start
+```
+
+MIT licensed. Built by PlanWire: https://planwire.io/?utm_source=npm&utm_medium=mcp_readme&utm_campaign=mcp

@@ -8,7 +8,7 @@
  * api.planwire.io — no data access is reimplemented here; every tool call is
  * an authenticated request with the user's own PlanWire API key.
  *
- * Auth: set PLANWIRE_API_KEY in the environment (get one at https://planwire.io).
+ * Auth: set PLANWIRE_API_KEY in the environment (get one at https://planwire.io/?utm_source=mcp_runtime&utm_medium=stdio&utm_campaign=mcp).
  */
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -79,7 +79,7 @@ const TOOLS: Tool[] = [
 async function apiGet(path: string, params: Record<string, unknown> = {}): Promise<unknown> {
   if (!API_KEY) {
     throw new Error(
-      "PLANWIRE_API_KEY is not set. Get a free key at https://planwire.io and add it to your MCP client config."
+      "PLANWIRE_API_KEY is not set. Get a free key at https://planwire.io/?utm_source=mcp_runtime&utm_medium=stdio&utm_campaign=mcp and add it to your MCP client config."
     );
   }
   const url = new URL(`${API_BASE}${path}`);
@@ -90,11 +90,11 @@ async function apiGet(path: string, params: Record<string, unknown> = {}): Promi
     headers: { "X-API-Key": API_KEY, Accept: "application/json" },
   });
   if (res.status === 401) {
-    throw new Error("PlanWire rejected the API key (401). Check PLANWIRE_API_KEY at https://planwire.io.");
+    throw new Error("PlanWire rejected the API key (401). Check PLANWIRE_API_KEY at https://planwire.io/?utm_source=mcp_runtime&utm_medium=stdio&utm_campaign=mcp.");
   }
   if (res.status === 429) {
     throw new Error(
-      "PlanWire daily rate limit reached (429). Upgrade your plan at https://planwire.io/#pricing for higher limits."
+      "PlanWire daily rate limit reached (429). Upgrade your plan at https://planwire.io/?utm_source=mcp_runtime&utm_medium=stdio&utm_campaign=mcp#pricing for higher limits."
     );
   }
   if (!res.ok) {
@@ -120,7 +120,7 @@ async function runTool(name: string, args: Record<string, unknown>): Promise<unk
 }
 
 const server = new Server(
-  { name: "planwire", version: "0.1.0" },
+  { name: "planwire", version: "0.1.4" },
   { capabilities: { tools: {} } }
 );
 

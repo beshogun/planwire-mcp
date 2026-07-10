@@ -7,7 +7,7 @@ startCommand:
     properties:
       planwireApiKey:
         type: string
-        description: Your PlanWire API key. Get a free sandbox key at https://planwire.io.
+        description: Get a free sandbox key at https://planwire.io/?utm_source=smithery&utm_medium=directory&utm_campaign=mcp.
   commandFunction: |-
     (config) => ({
       command: 'npx',

@@ -6,19 +6,19 @@
     "url": "https://github.com/beshogun/planwire-mcp",
     "source": "github"
   },
-  "version": "0.1.2",
-  "websiteUrl": "https://planwire.io/mcp",
+  "version": "0.1.4",
+  "websiteUrl": "https://planwire.io/mcp?utm_source=mcp_registry&utm_medium=directory&utm_campaign=mcp",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "planwire-mcp",
-      "version": "0.1.2",
+      "version": "0.1.4",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
-          "description": "Your PlanWire API key (free sandbox at https://planwire.io)",
+          "description": "Your PlanWire API key. Get a free sandbox key at https://planwire.io/?utm_source=mcp_registry&utm_medium=directory&utm_campaign=mcp.",
           "isRequired": true,
           "format": "string",
           "isSecret": true,
