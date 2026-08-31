@@ -69,7 +69,7 @@ UK planning application search for Claude, Cursor, and MCP clients.
 | ZBS index | Live. | Verify after npm `0.1.5` publish. |
 | SyncDev | Live. | Verify after npm `0.1.5` publish. |
 | Vibehackers | Live. | Verify after npm `0.1.5` publish. |
-| LobeHub | Live but broken: currently shows stale version `0.1.2` and the wrong install command `npx -y beshogun-planwire-mcp`. | Claim/update with `lhm.plugin.json`, or delist until corrected. Do not promote this listing while it has the wrong package name. |
+| LobeHub | Delisted on 31 Aug 2026 after claim/update still left the generated install command as `npx -y beshogun-planwire-mcp`. | Re-publish only if LobeHub can show install command `npx -y planwire-mcp`, or publish under a listing model that does not expose the wrong package command. |
 | PulseMCP | Public checks are Cloudflare-blocked and search did not confirm visibility. | Verify manually in the submission account. |
 | mcp.so | Public listing not visible in search/direct URL checks. | Check dashboard/email confirmation and resubmit if needed. |
 | awesome-mcp-servers | Prepared. | Open PR with the drafted entry below. |
