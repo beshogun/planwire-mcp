@@ -59,8 +59,8 @@ UK planning application search for Claude, Cursor, and MCP clients.
 
 | Directory | Status | Action |
 | --- | --- | --- |
-| npm | `0.1.5` prepared. | Publish after merge so npm and crawled directories see a fresh package version. |
-| Official MCP registry | Metadata present in `server.json`. | Re-submit or refresh after npm `0.1.5` is published. |
+| npm | `0.1.5` published and live. | Watch crawled directories for version refresh. |
+| Official MCP registry | Metadata present in `server.json`. | Re-submit or refresh now that npm `0.1.5` is published. |
 | Smithery | Metadata present in `smithery.yaml`; public listing not yet visible. | Check account/dashboard and resubmit if no pending entry exists. |
 | MCP Market | Live. | Verify after npm `0.1.5` publish. |
 | Glama | Live via crawler. | Verify after npm `0.1.5` publish. |
