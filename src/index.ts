@@ -120,7 +120,7 @@ async function runTool(name: string, args: Record<string, unknown>): Promise<unk
 }
 
 const server = new Server(
-  { name: "planwire", version: "0.1.4" },
+  { name: "planwire", version: "0.1.5" },
   { capabilities: { tools: {} } }
 );
 

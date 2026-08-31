@@ -1,0 +1,116 @@
+{
+  "author": "PlanWire",
+  "authorUrl": "https://github.com/beshogun",
+  "category": "tools",
+  "description": "UK planning application data for AI agents: search, geo-query, fetch applications, and list covered councils through the PlanWire API.",
+  "homepage": "https://planwire.io/mcp?utm_source=lobehub&utm_medium=directory&utm_campaign=mcp",
+  "identifier": "beshogun-planwire-mcp",
+  "name": "PlanWire MCP Server",
+  "tags": [
+    "planning",
+    "uk-planning",
+    "planning-applications",
+    "property",
+    "proptech",
+    "geospatial",
+    "government-data",
+    "search"
+  ],
+  "tools": [
+    {
+      "description": "Search UK planning applications by keyword, council, postcode, status, type, or date range.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "q": {
+            "type": "string",
+            "description": "Full-text search across address, description, and reference."
+          },
+          "council": {
+            "type": "string",
+            "description": "Council ID, for example camden or oxford."
+          },
+          "postcode": {
+            "type": "string",
+            "description": "Postcode or postcode prefix, for example OX1 or SW1A 1AA."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["Pending", "Approved", "Refused", "Withdrawn"],
+            "description": "Filter by decision status."
+          },
+          "type": {
+            "type": "string",
+            "description": "Application type, for example Householder, Full, or Listed Building."
+          },
+          "date_from": {
+            "type": "string",
+            "description": "Earliest application date, YYYY-MM-DD."
+          },
+          "date_to": {
+            "type": "string",
+            "description": "Latest application date, YYYY-MM-DD."
+          },
+          "page": {
+            "type": "integer",
+            "description": "Page number."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Results per page."
+          }
+        }
+      },
+      "name": "search_planning_applications"
+    },
+    {
+      "description": "Find planning applications within a radius of a latitude/longitude point.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "description": "Latitude in WGS84."
+          },
+          "lng": {
+            "type": "number",
+            "description": "Longitude in WGS84."
+          },
+          "radius_km": {
+            "type": "number",
+            "description": "Radius in kilometres."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Maximum results."
+          }
+        },
+        "required": ["lat", "lng"]
+      },
+      "name": "nearby_planning_applications"
+    },
+    {
+      "description": "Fetch a single planning application by its PlanWire application id.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "PlanWire application id."
+          }
+        },
+        "required": ["id"]
+      },
+      "name": "get_planning_application"
+    },
+    {
+      "description": "List covered local planning authorities and their council IDs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "name": "list_councils"
+    }
+  ],
+  "version": "0.1.5"
+}

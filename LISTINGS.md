@@ -5,7 +5,7 @@ This file tracks the MCP distribution work for `planwire-mcp`.
 Package:
 
 - npm: `planwire-mcp`
-- next metadata package version: `0.1.4`
+- current metadata package version: `0.1.5`
 - homepage: `https://planwire.io/mcp?utm_source=npm&utm_medium=package_homepage&utm_campaign=mcp`
 - repository: `https://github.com/beshogun/planwire-mcp`
 - install: `npx -y planwire-mcp`
@@ -59,13 +59,20 @@ UK planning application search for Claude, Cursor, and MCP clients.
 
 | Directory | Status | Action |
 | --- | --- | --- |
-| npm | `0.1.3` published and live. | Publish `0.1.4` after merge so the npm package includes the UTM-tagged acquisition links. |
-| Official MCP registry | Prepared | Submit `mcp/server.json` via the registry's package flow or PR. Needs registry account/token if automated. |
-| Smithery | Prepared | Connect GitHub and claim the repo. `mcp/smithery.yaml` is present. |
-| Glama | Needs Ben | Submit package URL and standard description above. |
-| PulseMCP | Needs Ben | Submit package URL and standard description above. |
-| mcp.so | Needs Ben | Submit package URL and standard description above. |
-| awesome-mcp-servers | Prepared | Open PR with the drafted entry below. |
+| npm | `0.1.5` prepared. | Publish after merge so npm and crawled directories see a fresh package version. |
+| Official MCP registry | Metadata present in `server.json`. | Re-submit or refresh after npm `0.1.5` is published. |
+| Smithery | Metadata present in `smithery.yaml`; public listing not yet visible. | Check account/dashboard and resubmit if no pending entry exists. |
+| MCP Market | Live. | Verify after npm `0.1.5` publish. |
+| Glama | Live via crawler. | Verify after npm `0.1.5` publish. |
+| mcpbeat | Live. | Verify after npm `0.1.5` publish. |
+| PluginBench | Live. | Verify after npm `0.1.5` publish. |
+| ZBS index | Live. | Verify after npm `0.1.5` publish. |
+| SyncDev | Live. | Verify after npm `0.1.5` publish. |
+| Vibehackers | Live. | Verify after npm `0.1.5` publish. |
+| LobeHub | Live but broken: currently shows stale version `0.1.2` and the wrong install command `npx -y beshogun-planwire-mcp`. | Claim/update with `lhm.plugin.json`, or delist until corrected. Do not promote this listing while it has the wrong package name. |
+| PulseMCP | Public checks are Cloudflare-blocked and search did not confirm visibility. | Verify manually in the submission account. |
+| mcp.so | Public listing not visible in search/direct URL checks. | Check dashboard/email confirmation and resubmit if needed. |
+| awesome-mcp-servers | Prepared. | Open PR with the drafted entry below. |
 
 ## awesome-mcp-servers Draft Entry
 

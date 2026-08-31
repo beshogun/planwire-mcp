@@ -20,6 +20,8 @@ You need Node.js 18+ and a PlanWire API key.
 npx -y planwire-mcp
 ```
 
+Use the package name exactly as shown: `planwire-mcp`. If an MCP directory shows an install command for `beshogun-planwire-mcp`, that directory has stale generated metadata and the install will fail.
+
 The server expects `PLANWIRE_API_KEY` in the environment. Optional: set `PLANWIRE_API_BASE` to override the default `https://api.planwire.io`.
 
 ## Claude Desktop
